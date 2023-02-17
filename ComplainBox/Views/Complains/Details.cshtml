@@ -1,0 +1,82 @@
+﻿@model Complain
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <h4>Complain Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Complained By
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ComplainedBy)
+        </dd>
+        <dt class = "col-sm-2">
+            Complained To
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ComplainTo)
+        </dd>
+        <dt class = "col-sm-2">
+            Contact No.
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ContactNo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+           Category
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ComplainType)
+        </dd>
+        <dt class = "col-sm-2">
+           Complain Title
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            Submitted at
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ComplainTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Reference)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Reference)
+        </dd>
+        <dt class = "col-sm-2">
+            Solved
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsResolved)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole(Model.ComplainTo))
+    {
+        <a asp-action="MarkAsResolved" asp-route-id="@Model.Id">Mark Solved</a> <span> | </span>
+        <a asp-action="MarkAsReturn" asp-route-id="@Model.Id">Return</a>  <span> | </span>
+    }
+
+    
+    <a asp-action="Index">Back to List</a>
+</div>

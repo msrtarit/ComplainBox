@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/01/2022 19:56:26" ReportInfo.Modified="07/01/2022 23:41:30" ReportInfo.CreatorVersion="2021.4.0.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="Complains" ReferenceName="Complains" DataType="null" Enabled="true">
+      <Column Name="Id" DataType="System.Guid"/>
+      <Column Name="ComplainTime" DataType="System.DateTime"/>
+      <Column Name="ComplainedBy" DataType="System.String"/>
+      <Column Name="ContactNo" DataType="System.String"/>
+      <Column Name="Email" DataType="System.String"/>
+      <Column Name="ComplainType" DataType="System.String"/>
+      <Column Name="ComplainTo" DataType="System.String"/>
+      <Column Name="Title" DataType="System.String"/>
+      <Column Name="Description" DataType="System.String"/>
+      <Column Name="IsResolved" DataType="System.String"/>
+      <Column Name="Reference" DataType="System.String"/>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" Landscape="true" PaperWidth="297" PaperHeight="210" RawPaperSize="9" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="1047.06" Height="85.05">
+      <TextObject Name="Text2" Top="47.25" Width="1048.95" Height="37.8" Text="Student Complain Report" HorzAlign="Center" Font="Times New Roman, 14pt"/>
+      <TextObject Name="Text3" Top="9.45" Width="1048.95" Height="37.8" Text="Complain Box" HorzAlign="Center" Font="Times New Roman, 20pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="89.76" Width="1047.06" Height="18.9">
+      <TextObject Name="Text1" Left="9.45" Width="37.8" Height="18.9" Border.Lines="All" Text="Row#" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text4" Left="47.25" Width="94.5" Height="18.9" Border.Lines="All" Text="ComplainTime" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text5" Left="236.25" Width="94.5" Height="18.9" Border.Lines="All" Text="ComplainedBy" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text6" Left="141.75" Width="94.5" Height="18.9" Border.Lines="All" Text="ComplainTo" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text7" Left="330.75" Width="94.5" Height="18.9" Border.Lines="All" Text="ContactNo" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text8" Left="425.25" Width="141.75" Height="18.9" Border.Lines="All" Text="Email" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text9" Left="567" Width="151.2" Height="18.9" Border.Lines="All" Text="Title" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text10" Left="718.2" Width="170.1" Height="18.9" Border.Lines="All" Text="Description" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text11" Left="888.3" Width="94.5" Height="18.9" Border.Lines="All" Text="Reference" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text12" Left="982.8" Width="56.7" Height="18.9" Border.Lines="All" Text="IsResolved" Font="Times New Roman, 8pt"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="113.36" Width="1047.06" Height="37.8" CanGrow="true" CanShrink="true" DataSource="Complains" KeepTogether="true" KeepDetail="true">
+      <TextObject Name="Text16" Left="9.45" Width="37.8" Height="37.8" Border.Lines="All" GrowToBottom="true" Text="[Row#]" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text17" Left="47.25" Width="94.5" Height="37.8" Border.Lines="All" GrowToBottom="true" Text="[FormatDateTime([Complains.ComplainTime],&quot;dd-MM-yyyy hh:mm:ss&quot;)]" Format="Time" Format.Format="T" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text18" Left="236.25" Width="94.5" Height="37.8" Border.Lines="All" GrowToBottom="true" Text="[Complains.ComplainedBy]" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text19" Left="141.75" Width="94.5" Height="37.8" Border.Lines="All" GrowToBottom="true" Text="[Complains.ComplainTo]" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text20" Left="330.75" Width="94.5" Height="37.8" Border.Lines="All" GrowToBottom="true" Text="[Complains.ContactNo]" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text21" Left="425.25" Width="141.75" Height="37.8" Border.Lines="All" GrowToBottom="true" Text="[Complains.Email]" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text22" Left="567" Width="151.2" Height="37.8" Border.Lines="All" GrowToBottom="true" Text="[Complains.Title]" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text23" Left="718.2" Width="170.1" Height="37.8" Border.Lines="All" GrowToBottom="true" Text="[Complains.Description]" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text24" Left="888.3" Width="94.5" Height="37.8" Border.Lines="All" GrowToBottom="true" Text="[Complains.Reference]" Font="Times New Roman, 8pt"/>
+      <TextObject Name="Text25" Left="982.8" Width="56.7" Height="37.8" Border.Lines="All" GrowToBottom="true" Text="[Complains.IsResolved]" Font="Times New Roman, 8pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="155.87" Width="1047.06" Height="18.9">
+      <TextObject Name="Text15" Left="784.35" Width="189" Height="18.9" Text="[Page#] of [TotalPages#]" HorzAlign="Right" Font="Times New Roman, 10pt, style=Bold"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

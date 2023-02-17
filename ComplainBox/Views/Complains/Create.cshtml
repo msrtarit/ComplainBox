@@ -1,0 +1,78 @@
+﻿@model Complain
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div style="background: linear-gradient(to left, rgba(128,64,192,0.5), rgba(128,224,192,0.5));">
+    <h4 class="text-center">Complain Box</h4>
+<hr />
+<div class="row">
+<div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ComplainedBy" class="control-label">Complained By</label>
+                <input asp-for="ComplainedBy" class="form-control" required="" value="@User.Identity.Name"/>
+                <span asp-validation-for="ComplainedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComplainTo" class="control-label">Complained To</label>
+                <select asp-for="ComplainTo" class="form-control" required="" asp-items="ViewBag.Roles"></select>
+                <span asp-validation-for="ComplainTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactNo" class="control-label">Contract No.</label>
+                <input asp-for="ContactNo" class="form-control" required=""/>
+                <span asp-validation-for="ContactNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComplainType" class="control-label">Category</label>
+                <select asp-for="ComplainType" class="form-control">
+                        <option value="Academic">Academic</option>
+                        <option value="Hall">Hall</option>
+                        <option value="Classroom">Classroom</option>
+                        <option value="Administrative">Administrative</option>
+                    <option value="Others">Others</option>
+                </select>
+                <span asp-validation-for="ComplainType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Complain Title</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reference" class="control-label"></label>
+                <input asp-for="Reference" class="form-control" placeholder="(if any)"/>
+                <span asp-validation-for="Reference" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary w-100" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+<div>
+        <a class="btn btn-outline-info ml-2" asp-action="Index">Back to List</a>
+</div>
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

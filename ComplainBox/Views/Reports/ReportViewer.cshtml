@@ -1,0 +1,23 @@
+﻿@model ReportViewModel
+
+@{
+    ViewData["Title"] = @Model.ReportName;
+}
+<style>
+    .webreport {
+        padding-left: 20px;
+        padding-right: 24px;
+        border: 1px gray solid;
+    }
+</style>
+
+<div class="text-center">
+    <div class="d-inline-block">
+        <div class="webreport">
+            @await Model.WebReport.Render()
+            <div class="text-center">
+                <a class="btn btn-warning" target="_blank" asp-action="ApplicationPdf">Download PDF</a>
+            </div>
+        </div>
+    </div>
+</div>

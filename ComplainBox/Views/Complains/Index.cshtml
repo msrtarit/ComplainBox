@@ -1,0 +1,93 @@
+﻿@model PaginatedList<Complain>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Complains</h4>
+
+<p>
+    <a class="btn btn-info" asp-action="Create">Create New</a>
+    @if (User.IsInRole("dean") || User.IsInRole("proctor") || User.IsInRole("Chairman"))
+    {
+        <a class="btn btn-outline-info ml-2" asp-controller="Reports" asp-action="ComplainsPreview">Generate Report</a>
+    }
+
+
+</p>
+
+<table class="table table-primary table-hover">
+    <thead>
+        <tr>
+            <th>
+                Complain Time
+            </th>
+            <th>
+                Complained By
+            </th>
+            <th>
+                Complained To
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Solved
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplainTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplainedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplainTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplainType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsResolved)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                @if (User.IsInRole(item.ComplainTo))
+                {
+                    <span> | </span>
+                    <a class="btn btn-warning" asp-action="MarkAsResolved" asp-route-id="@item.Id">Mark Solved</a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-pageNo="@(Model.PageIndex - 1)"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+
+   asp-route-pageNo="@(Model.PageIndex + 1)"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

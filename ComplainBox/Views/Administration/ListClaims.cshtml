@@ -1,0 +1,35 @@
+﻿@model IEnumerable<System.Security.Claims.Claim>
+
+@using Microsoft.AspNetCore.Authorization
+
+@inject IAuthorizationService AuthorizationService
+
+@{
+    ViewBag.Title = "All Roles";
+}
+
+    <div class="container">
+        <h1>All Roles</h1>
+
+        @if (Model.Any())
+        {
+            <a class="btn btn-primary w-100 mb-3" style="width:auto" asp-action="CreateRole"
+               asp-controller="Administration">Add new role</a>
+
+            foreach (var claim in Model)
+            {
+                <div class="card mb-3">
+                    <div class="card-header">
+                        @claim.Type
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary w-100" asp-action="EditUserInClaim" asp-route-claimType="@claim.Type">Add or remove users</a>
+                    </div>
+                    
+                </div>
+            }
+        }
+    </div>
+@section Scripts {
+    <script src="~/js/CustomScript.js"></script>
+}

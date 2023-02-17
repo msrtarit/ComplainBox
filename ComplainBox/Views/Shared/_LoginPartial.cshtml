@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (User.IsInRole("Customer"))
+    {
+        
+        <li class="nav-item">
+            <a class="nav-link text-success" asp-controller="CustomerOrders" asp-action="Index">
+                Recent Orders
+            </a>
+
+        </li>
+       
+    }
+    <li class="nav-item">
+        <a  class="nav-link text-success" asp-controller="Account" asp-action="ChangePassword" title="Manage">Hello @User.Identity.Name!</a>
+    </li>
+    <li class="nav-item">
+        <form  class="form-inline" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-success">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-success" asp-controller="Account"  asp-action="Register" >Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-success" asp-controller="Account"  asp-action="Login" >Login</a>
+    </li>
+}
+</ul>

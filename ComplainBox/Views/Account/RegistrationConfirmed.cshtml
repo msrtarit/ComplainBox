@@ -1,0 +1,20 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Account Registration";
+}
+
+<h4 class="text-center">Success</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="alert alert-success">Your registration has completed.</div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
